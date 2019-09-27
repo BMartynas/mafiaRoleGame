@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".instructions">
+
+    <TextView
+        android:id="@+id/instructionsDescription6"
+        android:layout_width="312dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="312dp"
+        android:text="Susede vaikai ratuku"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/instructionsDescription5"
+        android:layout_width="312dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="280dp"
+        android:text="ir pamerke jai akyte"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/instructionsDescription4"
+        android:layout_width="312dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="244dp"
+        android:text="petriukas blet nusov maryte"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/instructionsDescription8"
+        android:layout_width="312dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="376dp"
+        android:text="ir yra jiems smagu smagu smagu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/instructionsDescription2"
+        android:layout_width="312dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="208dp"
+        android:text="zaidzia mafija kartu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/instructionsDescription7"
+        android:layout_width="312dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="344dp"
+        android:text="zaidzia mafija kartu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/instructionsTitle"
+        android:layout_width="99dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="68dp"
+        android:text="Instructions"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/instructionsDescription"
+        android:layout_width="312dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="172dp"
+        android:text="Susede vaikai ratuku"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
