@@ -9,13 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--<activity android:name=".MainScreen"></activity>-->
-        <activity android:name=".NewGameLobby"></activity>
+        <activity
+            android:name=".NewGameLobby"
+            android:exported="true"></activity>
         <activity
             android:name=".NewRoomLobby"
+            android:exported="true"
             android:label="@string/title_activity_new_room_lobby"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainScreen">
+        <activity
+            android:exported="true"
+            android:name=".MainScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
