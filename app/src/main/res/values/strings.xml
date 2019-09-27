@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">MafiaRoleGame</string>
-    <string name="title_activity_new_room_lobby">NewRoomLobby</string>
+    <string name="enter_game_pin">Enter game PIN</string>
 </resources>

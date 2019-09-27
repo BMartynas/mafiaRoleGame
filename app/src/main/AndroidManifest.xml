@@ -9,14 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".JoinExistingGame"></activity>
         <activity
             android:name=".NewGameLobby"
-            android:exported="true"></activity>
-
-        <activity android:name=".setUpRolesNumber"
-                  android:exported="true"
-            ></activity>
-        <!-- <activity android:name=".MainScreen"></activity> -->
+            android:exported="true" />
+        <activity
+            android:name=".setUpRolesNumber"
+            android:exported="true" /> <!-- <activity android:name=".MainScreen"></activity> -->
         <activity android:name=".MainScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

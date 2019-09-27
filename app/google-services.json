@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "97535821177",
+    "firebase_url": "https://mafiarolegame-dbe8d.firebaseio.com",
+    "project_id": "mafiarolegame-dbe8d",
+    "storage_bucket": "mafiarolegame-dbe8d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97535821177:android:d4c52c0a5e0e0c21915ba8",
+        "android_client_info": {
+          "package_name": "com.example.mafiarolegame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "97535821177-jcoq6g0kt15roo4optpvrjuqhnqva38s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mafiarolegame",
+            "certificate_hash": "24c46bd2e9c59764adc1d5a42862329ef9d32a79"
+          }
+        },
+        {
+          "client_id": "97535821177-ffne3ftgvi24ghbgba3ha4h18i4cl967.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKMGm0iILyNXgjfIY49-AyzRI8-zfKnm4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "97535821177-ffne3ftgvi24ghbgba3ha4h18i4cl967.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

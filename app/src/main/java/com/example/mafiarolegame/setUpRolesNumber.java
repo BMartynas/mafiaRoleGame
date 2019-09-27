@@ -78,7 +78,7 @@ public class setUpRolesNumber extends AppCompatActivity {
         });
 
         confirm.setOnClickListener(new View.OnClickListener() {
-//            @Override
+            @Override
             public void onClick(View v) {
                 openNewGameLobby();
             }
