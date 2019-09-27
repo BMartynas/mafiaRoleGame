@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".JoinExistingGame"></activity>
+        <activity android:name=".instructions"></activity>
         <activity
             android:name=".NewGameLobby"
             android:exported="true" />
