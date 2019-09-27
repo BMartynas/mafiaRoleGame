@@ -2,6 +2,7 @@ package com.example.mafiarolegame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,8 @@ public class setUpRolesNumber extends AppCompatActivity {
         Button decNumberOfRoles = (Button) findViewById(R.id.decNumerOfRoles);
         Button decNumberOfCitizens = (Button) findViewById(R.id.decNumerOfCitizens);
         Button decNumberOfMafia = (Button) findViewById(R.id.decNumerOfMafia);
+
+        Button confirm = (Button) findViewById(R.id.confirmButton);
 
         incNumberOfRoles.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,5 +77,17 @@ public class setUpRolesNumber extends AppCompatActivity {
             }
         });
 
+        confirm.setOnClickListener(new View.OnClickListener() {
+//            @Override
+            public void onClick(View v) {
+                openNewGameLobby();
+            }
+        });
+
+    }
+
+    public void openNewGameLobby() {
+        Intent intent = new Intent(this, NewGameLobby.class);
+        startActivity(intent);
     }
 }
