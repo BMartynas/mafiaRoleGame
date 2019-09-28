@@ -10,6 +10,7 @@ import android.widget.Button;
 public class MainScreen extends AppCompatActivity {
 
     private Button createGameButton;
+    private Button joinGameButton;
     private Button quitGameButton;
     private Button instructionsButton;
 
@@ -19,6 +20,7 @@ public class MainScreen extends AppCompatActivity {
         setContentView(R.layout.activity_main_screen);
 
         createGameButton = (Button) findViewById(R.id.create);
+        joinGameButton = (Button) findViewById(R.id.join);
         quitGameButton = (Button) findViewById(R.id.quit);
         instructionsButton = (Button) findViewById(R.id.instructions);
 
@@ -26,6 +28,13 @@ public class MainScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openSetUpRolesNumber();
+            }
+        });
+
+        joinGameButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                openJoinExistingGame();
             }
         });
 
@@ -46,6 +55,11 @@ public class MainScreen extends AppCompatActivity {
 
     public void openSetUpRolesNumber() {
         Intent intent = new Intent(this, setUpRolesNumber.class);
+        startActivity(intent);
+    }
+
+    public void openJoinExistingGame() {
+        Intent intent = new Intent(this, JoinExistingGame.class);
         startActivity(intent);
     }
 
