@@ -41,10 +41,10 @@ public class JoinExistingGame extends AppCompatActivity {
             public void onClick(View v) {
                 //openNewGameLobby();
 
-                rand = new Random().nextInt(1000);
+                rand = new Random().nextInt(1000000);
                 gameRef = setUpRolesNumber.getDatabase().getReference("Session ID/" + gamePin.getText().toString());
                 playerRef = gameRef.child("players").child(intToString(rand));
-                playerRef.setValue(playerName.toString());
+                playerRef.setValue(playerName.getText().toString());
 
 
             }
