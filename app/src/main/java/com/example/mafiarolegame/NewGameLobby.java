@@ -14,6 +14,8 @@ public class NewGameLobby extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_game_lobby);
 
-        //TextView gamePin = new (TextView) findViewById(R.id.game_pin_text);
+        TextView gamePin = (TextView) findViewById(R.id.game_pin_text);
+
+        gamePin.setText(setUpRolesNumber.getGame().getPin());
     }
 }

@@ -14,9 +14,10 @@
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.321" />
+        app:layout_constraintVertical_bias="0.13" />
 
     <TextView
         android:id="@+id/game_pin_text"
@@ -32,14 +33,15 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="282dp"
-        android:layout_height="115dp"
-        android:text="WaITiNg fOr PlAyErs"
+        android:layout_width="184dp"
+        android:layout_height="83dp"
+        android:text="Players:"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/game_pin_text"
-        app:layout_constraintVertical_bias="0.192" />
+        app:layout_constraintVertical_bias="0.073" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,7 @@ public class setUpRolesNumber extends AppCompatActivity {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference rootRef = database.getReference();
     private DatabaseReference gameRef;
-    public GameSession game;
+    private static GameSession game;
 //    private DatabaseReference playersRef;
 //    private DatabaseReference pnRef;
 //    private DatabaseReference snRef;
@@ -122,5 +122,9 @@ public class setUpRolesNumber extends AppCompatActivity {
 
     private void createNewSession() {
 
+    }
+
+    public static GameSession getGame() {
+        return game;
     }
 }
