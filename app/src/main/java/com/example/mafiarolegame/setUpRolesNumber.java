@@ -8,7 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class setUpRolesNumber extends AppCompatActivity {
+
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference rootRef = database.getReference("this");
+    private DatabaseReference pinRef;
+//    private DatabaseReference playersRef;
+//    private DatabaseReference pnRef;
+//    private DatabaseReference snRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +29,9 @@ public class setUpRolesNumber extends AppCompatActivity {
         final EditText numberOfRoles = (EditText) findViewById(R.id.numberOfRoles);
         final EditText numberOfCitizens = (EditText) findViewById(R.id.numberOfCitizens);
         final EditText numberOfMafia = (EditText) findViewById(R.id.numberOfMafia);
+
+//        final EditText sessionName = (EditText) findViewById(R.id.session_name_text);
+//        final EditText sessionPin = (EditText) findViewById(R.id.session_pin_text);
 
         Button incNumberOfRoles = (Button) findViewById(R.id.incNumerOfRoles);
         Button incNumberOfCitizens = (Button) findViewById(R.id.incNumerOfCitizens);
@@ -81,6 +95,17 @@ public class setUpRolesNumber extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openNewGameLobby();
+                createNewSession();
+
+                pinRef.setValue("ok");
+//                pinRef = rootRef.child("0001");
+//                pinRef.setValue("works");
+//                snRef = pinRef.child("session name");
+//                snRef.setValue(sessionName.getText().toString());
+//                playersRef = pinRef.child("Players");
+//                pnRef = playersRef.child("1");
+//                pnRef.setValue("John");
+
             }
         });
 
@@ -89,5 +114,9 @@ public class setUpRolesNumber extends AppCompatActivity {
     public void openNewGameLobby() {
         Intent intent = new Intent(this, NewGameLobby.class);
         startActivity(intent);
+    }
+
+    private void createNewSession() {
+
     }
 }
