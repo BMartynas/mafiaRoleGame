@@ -14,7 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class setUpRolesNumber extends AppCompatActivity {
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference rootRef = database.getReference("this");
+    private DatabaseReference rootRef = database.getReference();
     private DatabaseReference pinRef;
 //    private DatabaseReference playersRef;
 //    private DatabaseReference pnRef;
@@ -97,9 +97,8 @@ public class setUpRolesNumber extends AppCompatActivity {
                 openNewGameLobby();
                 createNewSession();
 
-                pinRef.setValue("ok");
-//                pinRef = rootRef.child("0001");
-//                pinRef.setValue("works");
+                pinRef = rootRef.child("0001");
+                pinRef.setValue("works");
 //                snRef = pinRef.child("session name");
 //                snRef.setValue(sessionName.getText().toString());
 //                playersRef = pinRef.child("Players");

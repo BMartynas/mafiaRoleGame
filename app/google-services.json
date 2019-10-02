@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "97535821177-4jdj01nmtisps3onjkleo5e99tnkf5vo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mafiarolegame",
+            "certificate_hash": "4c8bfaa471dcb7bd04fe6bcd3ebdbc309ca25147"
+          }
+        },
+        {
           "client_id": "97535821177-jcoq6g0kt15roo4optpvrjuqhnqva38s.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
