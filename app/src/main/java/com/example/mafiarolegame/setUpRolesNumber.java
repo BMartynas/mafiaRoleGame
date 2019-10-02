@@ -13,8 +13,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class setUpRolesNumber extends AppCompatActivity {
 
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference rootRef = database.getReference();
+    private static FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference rootRef = database.getReference("Session ID");
     private DatabaseReference gameRef;
     private static GameSession game;
 //    private DatabaseReference playersRef;
@@ -96,11 +96,12 @@ public class setUpRolesNumber extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openNewGameLobby();
-                createNewSession();
+//                createNewSession();
 
                 game = new GameSession();
                 game.setPin(sessionPin.getText().toString());
                 game.setName(sessionName.getText().toString());
+                game.setPlayers("none");
 
                 gameRef = rootRef.child(game.getPin());
                 gameRef.setValue(game);
@@ -120,11 +121,15 @@ public class setUpRolesNumber extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void createNewSession() {
-
-    }
+//    private void createNewSession() {
+//
+//    }
 
     public static GameSession getGame() {
         return game;
+    }
+
+    public static FirebaseDatabase getDatabase() {
+        return database;
     }
 }
