@@ -15,7 +15,8 @@ public class setUpRolesNumber extends AppCompatActivity {
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference rootRef = database.getReference();
-    private DatabaseReference pinRef;
+    private DatabaseReference gameRef;
+    public GameSession game;
 //    private DatabaseReference playersRef;
 //    private DatabaseReference pnRef;
 //    private DatabaseReference snRef;
@@ -30,8 +31,8 @@ public class setUpRolesNumber extends AppCompatActivity {
         final EditText numberOfCitizens = (EditText) findViewById(R.id.numberOfCitizens);
         final EditText numberOfMafia = (EditText) findViewById(R.id.numberOfMafia);
 
-//        final EditText sessionName = (EditText) findViewById(R.id.session_name_text);
-//        final EditText sessionPin = (EditText) findViewById(R.id.session_pin_text);
+        final EditText sessionName = (EditText) findViewById(R.id.session_name_text);
+        final EditText sessionPin = (EditText) findViewById(R.id.session_pin_text);
 
         Button incNumberOfRoles = (Button) findViewById(R.id.incNumerOfRoles);
         Button incNumberOfCitizens = (Button) findViewById(R.id.incNumerOfCitizens);
@@ -97,8 +98,12 @@ public class setUpRolesNumber extends AppCompatActivity {
                 openNewGameLobby();
                 createNewSession();
 
-                pinRef = rootRef.child("0001");
-                pinRef.setValue("works");
+                game = new GameSession();
+                game.setPin(sessionPin.getText().toString());
+                game.setName(sessionName.getText().toString());
+
+                gameRef = rootRef.child(game.getPin());
+                gameRef.setValue(game);
 //                snRef = pinRef.child("session name");
 //                snRef.setValue(sessionName.getText().toString());
 //                playersRef = pinRef.child("Players");

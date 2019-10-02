@@ -19,10 +19,10 @@
         app:layout_constraintVertical_bias="0.321" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/game_pin_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="223322"
+        android:text="0000"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,6 +40,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/game_pin_text"
         app:layout_constraintVertical_bias="0.192" />
 </androidx.constraintlayout.widget.ConstraintLayout>
