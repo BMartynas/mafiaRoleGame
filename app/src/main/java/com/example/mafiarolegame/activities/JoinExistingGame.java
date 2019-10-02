@@ -1,4 +1,4 @@
-package com.example.mafiarolegame;
+package com.example.mafiarolegame.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,12 +9,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
 
+import com.example.mafiarolegame.gameElements.GameSession;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Random;
+
+import com.example.mafiarolegame.R;
 
 public class JoinExistingGame extends AppCompatActivity {
 
@@ -24,7 +27,7 @@ public class JoinExistingGame extends AppCompatActivity {
     private DatabaseReference gameRef;
     private DatabaseReference playerRef;
     private String gamePinS;
-    private GameSession game;
+//    private GameSession game;
     private int rand;
 
     @Override
