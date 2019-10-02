@@ -24,7 +24,7 @@ public class JoinExistingGame extends AppCompatActivity {
     private DatabaseReference gameRef;
     private DatabaseReference playerRef;
     private String gamePinS;
-    //private GameSession game;
+    private GameSession game;
     private int rand;
 
     @Override
@@ -39,12 +39,12 @@ public class JoinExistingGame extends AppCompatActivity {
         joinGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openNewGameLobby();
+                //openNewGameLobby();
 
                 rand = new Random().nextInt(1000);
                 gameRef = setUpRolesNumber.getDatabase().getReference("Session ID/" + gamePin.getText().toString());
                 playerRef = gameRef.child("players").child(intToString(rand));
-                playerRef.setValue("Liz");
+                playerRef.setValue(playerName.toString());
 
 
             }
