@@ -6,6 +6,6 @@ public class Mafia extends Player {
     }
 
     public void shootSomeone(Shootable player) {
-        player.toGetShot();
+//        player.toGetShot();
     }
 }

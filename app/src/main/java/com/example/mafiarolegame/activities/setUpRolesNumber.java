@@ -108,7 +108,7 @@ public class setUpRolesNumber extends AppCompatActivity {
 //                gameRef.setValue(game);
 
 //                for (int i = 0; i < numberOfMafia; i++) {
-                    game.addPlayer();
+                    //game.addPlayer();
 //                }
 
 

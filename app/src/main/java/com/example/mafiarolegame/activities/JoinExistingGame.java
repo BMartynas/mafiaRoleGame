@@ -10,11 +10,10 @@ import android.widget.EditText;
 import android.widget.Button;
 
 import com.example.mafiarolegame.gameElements.GameSession;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
-
+import com.google.firebase.database.DataSnapshot;
 import java.util.Random;
 
 import com.example.mafiarolegame.R;
@@ -23,6 +22,7 @@ public class JoinExistingGame extends AppCompatActivity {
 
     private EditText gamePin;
     private EditText playerName;
+    private String playerNameS;
     private Button joinGame;
     private DatabaseReference gameRef;
     private DatabaseReference playerRef;
@@ -45,9 +45,11 @@ public class JoinExistingGame extends AppCompatActivity {
                 //openNewGameLobby();
 
                 rand = new Random().nextInt(1000000);
+                playerNameS = playerName.getText().toString();
                 gameRef = setUpRolesNumber.getDatabase().getReference("Session ID/" + gamePin.getText().toString());
                 playerRef = gameRef.child("players").child(intToString(rand));
-                playerRef.setValue(playerName.getText().toString());
+                playerRef.setValue(playerNameS);
+//                playerRef.setValue("sure");
 
 
             }

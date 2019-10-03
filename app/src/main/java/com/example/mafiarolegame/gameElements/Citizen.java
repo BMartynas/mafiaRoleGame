@@ -6,7 +6,7 @@ public class Citizen extends Player implements Shootable {
     }
 
     public void toGetShot() {
-        super.setStatus(false);
+//        super.setStatus(false);
     }
 
 }

@@ -1,8 +1,8 @@
 package com.example.mafiarolegame.gameElements;
 
 public class Player {
-    private String name;
-    boolean status = true;  //true - alive, false - dead
+    public String name;
+    //boolean status = true;  //true - alive, false - dead
                             //gal enumą geriau parašyt bet kam čia terliotis? Jankus sad
 
     public Player(String name) {
@@ -10,7 +10,7 @@ public class Player {
     }
 
     public void setStatus(boolean newStatus) {
-        this.status = newStatus;
+//        this.status = newStatus;
     }
 
 }
