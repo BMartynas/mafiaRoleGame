@@ -1,12 +1,7 @@
 package com.example.mafiarolegame.gameElements;
 
-public class Citizen extends Player implements Shootable {
-    public Citizen() {
-        super("Citizen");
+public class Citizen extends Player {
+    public Citizen(String name) {
+        super(name);
     }
-
-    public void toGetShot() {
-//        super.setStatus(false);
-    }
-
 }

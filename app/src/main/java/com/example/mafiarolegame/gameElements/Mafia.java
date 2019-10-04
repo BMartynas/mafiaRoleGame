@@ -1,11 +1,11 @@
 package com.example.mafiarolegame.gameElements;
 
 public class Mafia extends Player {
-    public Mafia() {
-        super("Mafia");
+    public Mafia(String name) {
+        super(name);
     }
 
-    public void shootSomeone(Shootable player) {
-//        player.toGetShot();
+    public void shoot(Shootable player) {
+        player.getShot();
     }
 }
