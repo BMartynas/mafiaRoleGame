@@ -1,16 +1,23 @@
 package com.example.mafiarolegame.gameElements;
 
-public class Player {
+public class Player implements Shootable {
     public String name;
-    //boolean status = true;  //true - alive, false - dead
-                            //gal enumą geriau parašyt bet kam čia terliotis? Jankus sad
+    boolean alive = true;
+    //gal enumą geriau parašyt bet kam čia terliotis? Jankus sad
 
     public Player(String name) {
         this.name = name;
     }
 
-    public void setStatus(boolean newStatus) {
-//        this.status = newStatus;
+    public void setIsAlive(boolean b) {
+        alive = b;
     }
 
+    public void getShot() {
+        setIsAlive(false);
+    }
+
+    public void getHealed() {
+        setIsAlive(true);
+    }
 }
