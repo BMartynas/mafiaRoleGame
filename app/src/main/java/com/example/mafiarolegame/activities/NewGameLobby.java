@@ -18,6 +18,6 @@ public class NewGameLobby extends AppCompatActivity {
 
         TextView gamePin = (TextView) findViewById(R.id.game_pin_text);
 
-        gamePin.setText(setUpRolesNumber.getGame().getPin());
+//        gamePin.setText(setUpRolesNumber.getGame().getPin());
     }
 }

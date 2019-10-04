@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
 
+import com.example.mafiarolegame.gameElements.DBManager;
 import com.example.mafiarolegame.gameElements.GameSession;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,6 +30,7 @@ public class JoinExistingGame extends AppCompatActivity {
     private String gamePinS;
 //    private GameSession game;
     private int rand;
+    DBManager DBM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +46,13 @@ public class JoinExistingGame extends AppCompatActivity {
             public void onClick(View v) {
                 //openNewGameLobby();
 
-                rand = new Random().nextInt(1000000);
-                playerNameS = playerName.getText().toString();
-                gameRef = setUpRolesNumber.getDatabase().getReference("Session ID/" + gamePin.getText().toString());
-                playerRef = gameRef.child("players").child(intToString(rand));
-                playerRef.setValue(playerNameS);
+//                rand = new Random().nextInt(1000000);
+//                gameRef = setUpRolesNumber.getDatabase().getReference("Session ID/" + gamePin.getText().toString());
+//                playerRef = gameRef.child("players").child(intToString(rand));
+//                playerRef.setValue(playerNameS);
 //                playerRef.setValue("sure");
-
+                DBM = new DBManager(gamePin.getText().toString());
+                DBM.createNewPlayer(playerName.getText().toString());
 
             }
         });

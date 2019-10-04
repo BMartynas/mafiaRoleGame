@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.mafiarolegame.R;
+import com.example.mafiarolegame.gameElements.DBManager;
 import com.example.mafiarolegame.gameElements.GameSession;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -22,6 +23,7 @@ public class setUpRolesNumber extends AppCompatActivity {
 //    private DatabaseReference playersRef;
 //    private DatabaseReference pnRef;
 //    private DatabaseReference snRef;
+    private DBManager DBM;
 
 
     @Override
@@ -101,6 +103,9 @@ public class setUpRolesNumber extends AppCompatActivity {
 //                createNewSession();
 
                 game = new GameSession(sessionPin.getText().toString(), sessionName.getText().toString());
+                DBM = new DBManager(game.getPin());
+                DBM.createNewGame(game);
+
 //                game.setPin();
 //                game.setName();
 
