@@ -45,19 +45,12 @@ public class JoinExistingGame extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //openNewGameLobby();
-
-//                rand = new Random().nextInt(1000000);
-//                gameRef = setUpRolesNumber.getDatabase().getReference("Session ID/" + gamePin.getText().toString());
-//                playerRef = gameRef.child("players").child(intToString(rand));
-//                playerRef.setValue(playerNameS);
-//                playerRef.setValue("sure");
                 DBM = new DBManager(gamePin.getText().toString());
                 DBM.createNewPlayer(playerName.getText().toString());
-
+                openNewGameLobby();
             }
         });
 
-//        gameRef.addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //                game = dataSnapshot.getValue(GameSession.class);
