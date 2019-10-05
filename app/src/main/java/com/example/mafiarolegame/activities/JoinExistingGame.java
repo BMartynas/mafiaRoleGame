@@ -23,7 +23,7 @@ public class JoinExistingGame extends AppCompatActivity {
 
     private EditText gamePin;
     private EditText playerName;
-    private String playerNameS;
+//    private String playerNameS;
     private Button joinGame;
     private DatabaseReference gameRef;
     private DatabaseReference playerRef;
@@ -66,8 +66,13 @@ public class JoinExistingGame extends AppCompatActivity {
     }
 
     public void openNewGameLobby() {
+//        String nameInfo = "";
         Intent intent = new Intent(this, NewGameLobby.class);
+        intent.putExtra("nameInfo", playerName.getText().toString());
+        intent.putExtra("gamePinInfo", gamePin.getText().toString());
         startActivity(intent);
+//        Intent intent = new Intent(getBaseContext(), NewGameLobby.class);
+//        startActivity(intent);
     }
 
     private String intToString(int sk) {
