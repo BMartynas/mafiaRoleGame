@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+import android.util.Log;
 
 import com.example.mafiarolegame.gameElements.DBManager;
 import com.example.mafiarolegame.gameElements.GameSession;
@@ -28,9 +29,9 @@ public class JoinExistingGame extends AppCompatActivity {
     private DatabaseReference gameRef;
     private DatabaseReference playerRef;
     private String gamePinS;
-//    private GameSession game;
+    private GameSession game;
     private int rand;
-    DBManager DBM;
+    private DBManager DBM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,26 +42,34 @@ public class JoinExistingGame extends AppCompatActivity {
         playerName = (EditText) findViewById(R.id.player_name_text);
         joinGame = (Button) findViewById(R.id.join_game_button);
 
+
         joinGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //openNewGameLobby();
                 DBM = new DBManager(gamePin.getText().toString());
-                DBM.createNewPlayer(playerName.getText().toString());
-                openNewGameLobby();
+
+
+
+                DBM.getGameRef().addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        DBM.createNewPlayer(playerName.getText().toString(), dataSnapshot);
+                        openNewGameLobby();
+                        //game = dataSnapshot.getValue(GameSession.class);
+                        Log.v("TAGYEH", "" + dataSnapshot.child("players").getChildrenCount());
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Log.v("TAGYEH", "NO");
+                    }
+                });
+
             }
         });
 
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                game = dataSnapshot.getValue(GameSession.class);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
+
 
 
     }

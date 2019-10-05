@@ -24,11 +24,11 @@ public class GameSession {
 //    private int rand;
 
 //    private DBManager DBM;
-    private ArrayList<Player> Players = new ArrayList<Player>();
+    private ArrayList<Player> players = new ArrayList<Player>();
     private String pin;
     private String name;
-    private int numberOfPlayers;
-    private Player tempPlayer;
+    //private int numberOfPlayers;
+    //private Player players;
 
     public GameSession(String pin, String name) {
         this.pin = pin;
@@ -39,35 +39,6 @@ public class GameSession {
 //        gameRef.setValue(this);
 //        playersRef = gameRef.child("players");
 
-
-
-//        playersRef.addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//                Log.v("TAGYEH", s);
-//            }
-//
-//            @Override
-//            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//            }
-//
-//            @Override
-//            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-//
     }
 
     public String getPin() {

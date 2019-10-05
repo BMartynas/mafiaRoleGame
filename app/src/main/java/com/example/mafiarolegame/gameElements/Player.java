@@ -1,12 +1,16 @@
 package com.example.mafiarolegame.gameElements;
 
 public class Player implements Shootable {
-    public String name;
-    boolean alive = true;
+    private String name;
+    private String id;
+    private boolean alive;
     //gal enumą geriau parašyt bet kam čia terliotis? Jankus sad
 
-    public Player(String name) {
+    public Player(String name, String id) {
         this.name = name;
+        this.id = id;
+        alive = true;
+
     }
 
     public void setIsAlive(boolean b) {
