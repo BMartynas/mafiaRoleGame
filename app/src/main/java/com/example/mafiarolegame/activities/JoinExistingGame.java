@@ -28,6 +28,7 @@ public class JoinExistingGame extends AppCompatActivity {
     private DatabaseReference gameRef;
     private DatabaseReference playerRef;
     private String gamePinS;
+    private String uniquePlayerID;
 //    private GameSession game;
     private int rand;
     DBManager DBM;
@@ -46,7 +47,7 @@ public class JoinExistingGame extends AppCompatActivity {
             public void onClick(View v) {
                 //openNewGameLobby();
                 DBM = new DBManager(gamePin.getText().toString());
-                DBM.createNewPlayer(playerName.getText().toString());
+                uniquePlayerID = DBM.createNewPlayer(playerName.getText().toString());
                 openNewGameLobby();
             }
         });
@@ -70,6 +71,8 @@ public class JoinExistingGame extends AppCompatActivity {
         Intent intent = new Intent(this, NewGameLobby.class);
         intent.putExtra("nameInfo", playerName.getText().toString());
         intent.putExtra("gamePinInfo", gamePin.getText().toString());
+        intent.putExtra("uniquePlayerID", uniquePlayerID);
+
         startActivity(intent);
 //        Intent intent = new Intent(getBaseContext(), NewGameLobby.class);
 //        startActivity(intent);

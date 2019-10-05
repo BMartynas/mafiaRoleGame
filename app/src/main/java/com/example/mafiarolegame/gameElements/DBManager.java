@@ -1,7 +1,14 @@
 package com.example.mafiarolegame.gameElements;
 
+import androidx.annotation.NonNull;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.Random;
 
 import java.util.Random;
@@ -30,14 +37,12 @@ public class DBManager {
         return game.getPin();
     }
 
-    public void createNewPlayer(String name) {
+    public String createNewPlayer(String name) {
         rand = new Random().nextInt(1000000);
         playersRef = gameRef.child("players");
         DatabaseReference playerUniqueRef = playersRef.child(rand + "");
         playerUniqueRef.setValue(name);
+        return rand + "";
     }
 
-//    public void addPlayerInfo() {
-//
-//    }
 }

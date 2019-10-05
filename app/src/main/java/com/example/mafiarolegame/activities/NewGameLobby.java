@@ -9,9 +9,10 @@ import com.example.mafiarolegame.R;
 import com.example.mafiarolegame.gameElements.DBManager;
 
 public class NewGameLobby extends AppCompatActivity {
-    private DBManager DBM = new DBManager("1001");
+    private DBManager DBM;
     String playerNameInfo = "";
-//    DBM = new DBM()
+    String uniquePlayerID = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,10 +25,14 @@ public class NewGameLobby extends AppCompatActivity {
         if (previousActivityInfo != null) {
             String gamePinInfo = previousActivityInfo.getString("gamePinInfo");
             gamePin.setText(gamePinInfo);
+            DBM = new DBManager(gamePinInfo);
 
-            playerNameInfo = "     " + previousActivityInfo.getString("nameInfo");
-            player1.append(playerNameInfo);
+
+            playerNameInfo = previousActivityInfo.getString("nameInfo");
+            uniquePlayerID = previousActivityInfo.getString("uniquePlayerID");
         }
+
+
 
 //        TextView player1 = (TextView) findViewById(R.id.player1);
     }
