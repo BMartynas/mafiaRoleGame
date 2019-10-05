@@ -87,10 +87,11 @@ public class GameSession {
     }
 
     public void addPlayer() {
+
 //        rand = new Random().nextInt(1000000);
 //        Mafia playerObj = new Mafia("test");
 //        Players.add(playerObj);
-        //gameRef.setValue(this);
+//        gameRef.setValue(this);
 //        testRef = playersRef.child("" + rand);
 //        testRef.setValue(playerObj);
     }

@@ -37,4 +37,7 @@ public class DBManager {
         playerUniqueRef.setValue(name);
     }
 
+//    public void addPlayerInfo() {
+//
+//    }
 }
