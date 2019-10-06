@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.mafiarolegame.R;
+import com.example.mafiarolegame.gameElements.GameSession;
 
 public class NewGameLobby extends AppCompatActivity {
 
@@ -18,6 +19,6 @@ public class NewGameLobby extends AppCompatActivity {
 
         TextView gamePin = (TextView) findViewById(R.id.game_pin_text);
 
-//        gamePin.setText(setUpRolesNumber.getGame().getPin());
+//        gamePin.setText(game.get);
     }
 }

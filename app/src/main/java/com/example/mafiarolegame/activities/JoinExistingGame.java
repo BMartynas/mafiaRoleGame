@@ -49,14 +49,14 @@ public class JoinExistingGame extends AppCompatActivity {
                 //openNewGameLobby();
                 DBM = new DBManager(gamePin.getText().toString());
 
-
-
                 DBM.getGameRef().addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         DBM.createNewPlayer(playerName.getText().toString(), dataSnapshot);
+                        game = dataSnapshot.getValue(GameSession.class);
+
+
                         openNewGameLobby();
-                        //game = dataSnapshot.getValue(GameSession.class);
                         Log.v("TAGYEH", "" + dataSnapshot.child("players").getChildrenCount());
                     }
 
@@ -65,21 +65,12 @@ public class JoinExistingGame extends AppCompatActivity {
                         Log.v("TAGYEH", "NO");
                     }
                 });
-
             }
         });
-
-
-
-
     }
 
     public void openNewGameLobby() {
         Intent intent = new Intent(this, NewGameLobby.class);
         startActivity(intent);
-    }
-
-    private String intToString(int sk) {
-        return ("" + sk);
     }
 }

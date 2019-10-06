@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,12 +32,15 @@ public class setUpRolesNumber extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_up_roles_number);
 
+//        Log.v("BIGTAG", "POOOOOf");
+
 //        final EditText numberOfRoles = (EditText) findViewById(R.id.numberOfRoles);
         final EditText numberOfCitizens = (EditText) findViewById(R.id.numberOfCitizens);
         final EditText numberOfMafia = (EditText) findViewById(R.id.numberOfMafia);
 
         final EditText sessionName = (EditText) findViewById(R.id.session_name_text);
         final EditText sessionPin = (EditText) findViewById(R.id.session_pin_text);
+        final EditText nickname = (EditText) findViewById(R.id.nickname_text);
 
 //        Button incNumberOfRoles = (Button) findViewById(R.id.incNumerOfRoles);
         Button incNumberOfCitizens = (Button) findViewById(R.id.incNumerOfCitizens);
@@ -99,30 +103,12 @@ public class setUpRolesNumber extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openNewGameLobby();
-//                createNewSession();
 
                 game = new GameSession(sessionPin.getText().toString(), sessionName.getText().toString());
                 DBM = new DBManager(game.getPin());
-                DBM.createNewGame(game);
+                DBM.createNewGame(game, nickname.getText().toString());
 
-//                game.setPin();
-//                game.setName();
-
-//                gameRef = rootRef.child(game.getPin());
-//                gameRef.setValue(game);
-
-//                for (int i = 0; i < numberOfMafia; i++) {
-                    //game.addPlayer();
-//                }
-
-
-//                snRef = pinRef.child("session name");
-//                snRef.setValue(sessionName.getText().toString());
-//                playersRef = pinRef.child("Players");
-//                pnRef = playersRef.child("1");
-//                pnRef.setValue("John");
-
+                openNewGameLobby();
             }
         });
 
