@@ -30,7 +30,6 @@ public class DBManager {
     public DBManager(String gamePin) {
         this.gamePin = gamePin;
         gameRef = rootRef.child(gamePin);
-
     }
 
     public void createNewGame(GameSession game, String nick) {

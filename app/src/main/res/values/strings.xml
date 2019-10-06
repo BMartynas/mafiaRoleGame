@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MafiaRoleGame</string>
     <string name="enter_game_pin">Enter game PIN</string>
+    <string name="player1"></string>
 </resources>
