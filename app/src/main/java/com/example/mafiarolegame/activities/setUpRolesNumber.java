@@ -116,6 +116,7 @@ public class setUpRolesNumber extends AppCompatActivity {
 
     public void openNewGameLobby() {
         Intent intent = new Intent(this, NewGameLobby.class);
+        intent.putExtra("gamePinInfo", game.getPin());
         startActivity(intent);
     }
 

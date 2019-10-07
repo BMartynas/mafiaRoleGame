@@ -16,8 +16,14 @@ public class NewGameLobby extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_game_lobby);
-
         TextView gamePin = (TextView) findViewById(R.id.game_pin_text);
+
+
+        Bundle previousActivityInfo = getIntent().getExtras();
+        if (previousActivityInfo != null) {
+            String gamePinInfo = previousActivityInfo.getString("gamePinInfo");
+            gamePin.setText(gamePinInfo);
+        }
 
 //        gamePin.setText(game.get);
     }

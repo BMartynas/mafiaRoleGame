@@ -71,6 +71,7 @@ public class JoinExistingGame extends AppCompatActivity {
 
     public void openNewGameLobby() {
         Intent intent = new Intent(this, NewGameLobby.class);
+        intent.putExtra("gamePinInfo", gamePin.getText().toString());
         startActivity(intent);
     }
 }
