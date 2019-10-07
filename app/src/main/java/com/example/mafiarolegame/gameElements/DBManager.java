@@ -25,7 +25,7 @@ public class DBManager {
 
     private int rand;
     private String gamePin;
-//    private String playerPin;
+        //    private String playerPin;
 
     public DBManager(String gamePin) {
         this.gamePin = gamePin;
