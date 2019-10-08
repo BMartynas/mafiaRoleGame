@@ -9,9 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ShowRole"></activity>
+        <activity android:name=".activities.ShowRole" />
         <activity android:name=".activities.JoinExistingGame" />
         <activity android:name=".activities.instructions" />
+        <activity
+            android:name=".activities.CurrentGameScreen"
+            android:exported="true" />
         <activity
             android:name=".activities.NewGameLobby"
             android:exported="true" />

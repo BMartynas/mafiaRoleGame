@@ -69,7 +69,4 @@ public class MainScreen extends AppCompatActivity {
         Intent intent = new Intent(this, instructions.class);
         startActivity(intent);
     }
-
-
-
 }
