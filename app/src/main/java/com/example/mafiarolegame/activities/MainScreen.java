@@ -56,7 +56,7 @@ public class MainScreen extends AppCompatActivity {
     }
 
     public void openSetUpRolesNumber() {
-        Intent intent = new Intent(this, setUpRolesNumber.class);
+        Intent intent = new Intent(this, SetUpRolesNumber.class);
         startActivity(intent);
     }
 
@@ -66,7 +66,7 @@ public class MainScreen extends AppCompatActivity {
     }
 
     public void openInstructions() {
-        Intent intent = new Intent(this, instructions.class);
+        Intent intent = new Intent(this, Instructions.class);
         startActivity(intent);
     }
 }

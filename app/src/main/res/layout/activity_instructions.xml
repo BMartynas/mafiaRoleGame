@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.instructions">
+    tools:context=".activities.Instructions">
 
     <TextView
         android:id="@+id/instructionsDescription6"

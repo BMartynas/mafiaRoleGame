@@ -101,8 +101,7 @@ public class GameSession {
 ////        testRef.setValue(playerObj);
 //    }
 
-    public boolean chechIfEnoughPlayers() {
-        if(this.numberOfRoles == this.numberOfPlayers) return true;
-        else return false;
+    public boolean checkIfEnoughPlayers() {
+        return this.numberOfRoles == this.numberOfPlayers;
     }
 }
