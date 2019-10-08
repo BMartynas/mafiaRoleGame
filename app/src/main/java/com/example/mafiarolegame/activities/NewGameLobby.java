@@ -61,7 +61,7 @@ public class NewGameLobby extends AppCompatActivity {
     }
 
         public void showRole() {
-            Intent intent = new Intent(this, PlayersRole.class);
+            Intent intent = new Intent(this, ShowRole.class);
             startActivity(intent);
     }
 }
