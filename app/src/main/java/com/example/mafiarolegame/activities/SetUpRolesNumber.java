@@ -13,7 +13,7 @@ import com.example.mafiarolegame.gameElements.DBManager;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class setUpRolesNumber extends AppCompatActivity {
+public class SetUpRolesNumber extends AppCompatActivity {
 
     private static FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference rootRef = database.getReference("Session ID");

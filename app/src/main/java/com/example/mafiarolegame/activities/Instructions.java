@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.example.mafiarolegame.R;
 
-public class instructions extends AppCompatActivity {
+public class Instructions extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activities.ShowRole" />
         <activity android:name=".activities.JoinExistingGame" />
-        <activity android:name=".activities.instructions" />
+        <activity android:name=".activities.Instructions" />
         <activity
             android:name=".activities.CurrentGameScreen"
             android:exported="true" />
@@ -19,7 +19,7 @@
             android:name=".activities.NewGameLobby"
             android:exported="true" />
         <activity
-            android:name=".activities.setUpRolesNumber"
+            android:name=".activities.SetUpRolesNumber"
             android:exported="true" /> <!-- <activity android:name=".MainScreen"></activity> -->
         <activity android:name=".activities.MainScreen">
             <intent-filter>

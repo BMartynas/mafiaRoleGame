@@ -74,6 +74,4 @@ public class JoinExistingGame extends AppCompatActivity {
         intent.putExtra("gamePinInfo", gamePin.getText().toString());
         startActivity(intent);
     }
-
-
 }
