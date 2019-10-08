@@ -47,6 +47,7 @@ public class NewGameLobby extends AppCompatActivity {
                 listOfPlayers.setText(listOfPlayersDisplay);
                 numberOfPlayers = game.getPlayers().size();
                 game.setNumberOfPlayers(numberOfPlayers);
+                DBM.updateDB();
                 if(game.getNumberOfRoles() == DBM.getNumberOfPlayers(dataSnapshot)) showRole();
             }
 

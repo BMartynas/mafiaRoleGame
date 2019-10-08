@@ -13,6 +13,7 @@ public class DBManager {
     private DatabaseReference numberOfPlayers;
     private DatabaseReference testRef;
     private DatabaseReference playerUniqueRef;
+    private GameSession gameSessionRef;
 
     private int rand;
     private String gamePin;
@@ -25,7 +26,7 @@ public class DBManager {
 
     public void createNewGame(GameSession game, String nick) {
         //gameRef = rootRef.child(game.getPin());
-
+        this.gameSessionRef = game;
 //        ArrayList<Player> someL = new ArrayList<>();
 //        someL.add(new Player("one", "01"));
 //        someL.add(new Player("two", "02"));
@@ -62,6 +63,10 @@ public class DBManager {
 
     public DatabaseReference getGameRef() {
         return gameRef;
+    }
+
+    public void updateDB() {
+        this.gameRef.setValue(this.gameSessionRef);
     }
 
 }

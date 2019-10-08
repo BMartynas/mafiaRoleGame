@@ -4,7 +4,9 @@ public class Player /*implements Shootable */{
     private String name;
     private String id;
     private boolean alive;
+    private String role = "Citizen";
     //gal enumą geriau parašyt bet kam čia terliotis? Jankus sad
+    //negeriau, nereikia cia svaigt apie visokius enumus b***, man ir taip niekas neveikia ******!!!
 
     public Player() {
 
