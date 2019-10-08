@@ -46,11 +46,13 @@ public class DBManager {
         //return game.getPin();
     }
 
-    public void createNewPlayer(String name, DataSnapshot ds) {
+    public void createNewPlayer(String name, DataSnapshot ds, GameSession game) {
         //rand = new Random().nextInt(1000000);
         playersRef = gameRef.child("players");
         playerUniqueRef = playersRef.child("" + ds.child("players").getChildrenCount());
-        playerUniqueRef.setValue(new Player(name, "" + ds.child("players").getChildrenCount()));
+        Player newPlayer = new Player(name, "" + ds.child("players").getChildrenCount());
+        game.addPlayerToList(newPlayer);
+        playerUniqueRef.setValue(newPlayer);
     }
 
     public void refreshValues(GameSession game) {
@@ -63,6 +65,10 @@ public class DBManager {
 
     public DatabaseReference getGameRef() {
         return gameRef;
+    }
+
+    public DatabaseReference getPlayersRef() {
+        return this.playersRef;
     }
 
     public void updateDB() {

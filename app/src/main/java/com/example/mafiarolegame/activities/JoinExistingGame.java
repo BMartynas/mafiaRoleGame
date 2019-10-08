@@ -51,8 +51,8 @@ public class JoinExistingGame extends AppCompatActivity {
                 DBM.getGameRef().addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        DBM.createNewPlayer(playerName.getText().toString(), dataSnapshot);
                         game = dataSnapshot.getValue(GameSession.class);
+                        DBM.createNewPlayer(playerName.getText().toString(), dataSnapshot, game);
 
 
 

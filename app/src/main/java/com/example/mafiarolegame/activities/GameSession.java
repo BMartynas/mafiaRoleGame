@@ -105,7 +105,4 @@ public class GameSession {
         if(this.numberOfRoles == this.numberOfPlayers) return true;
         else return false;
     }
-
-
-
 }
