@@ -17,7 +17,6 @@ public class Player /*implements Shootable */{
         this.id = id;
         alive = true;
         this.role = role;
-
     }
 
     public String getName() {
@@ -46,9 +45,5 @@ public class Player /*implements Shootable */{
 
     public void getShot() {
         setIsAlive(false);
-    }
-
-    public void getHealed() {
-        setIsAlive(true);
     }
 }

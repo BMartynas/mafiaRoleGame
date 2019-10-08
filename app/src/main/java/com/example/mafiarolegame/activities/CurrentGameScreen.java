@@ -2,6 +2,7 @@ package com.example.mafiarolegame.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ public class CurrentGameScreen extends AppCompatActivity {
     private int timeLeft = 5;       // test, change later
     private boolean isDay;
     final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public class CurrentGameScreen extends AppCompatActivity {
 
         timeLeftText = findViewById(R.id.timeLeftText);
         timeOfDayText = findViewById(R.id.timeOfDayText);
-        setTimeOfDay(true);
+        changeTimeOfDay(true);
         startCountdown();
     }
 
@@ -45,21 +47,25 @@ public class CurrentGameScreen extends AppCompatActivity {
         timeLeftText.setText(Integer.toString(timeLeft));
         if (timeLeft == 0)
         {
-            setTimeOfDay(!isDay);
+            changeTimeOfDay(!isDay);
             timeLeft = 6;       // test, change later
         }
     }
 
-    public void setTimeOfDay(boolean isDay)
+    public void changeTimeOfDay(boolean isDay)
     {
         this.isDay = isDay;
         if (isDay)
         {
             timeOfDayText.setText("Day");
+            mediaPlayer = MediaPlayer.create(CurrentGameScreen.this, R.raw.everyone_wake_up);   // galima gaidi
+            mediaPlayer.start();
         }
         else
         {
             timeOfDayText.setText("Night");
+            mediaPlayer = MediaPlayer.create(CurrentGameScreen.this, R.raw.mafia_wake_up_vote);
+            mediaPlayer.start();
         }
     }
 }
