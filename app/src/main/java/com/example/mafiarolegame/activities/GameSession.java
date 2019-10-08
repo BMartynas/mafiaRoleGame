@@ -1,20 +1,11 @@
-package com.example.mafiarolegame.gameElements;
+package com.example.mafiarolegame.activities;
 
-import android.provider.ContactsContract;
+import android.content.Context;
+import android.content.Intent;
 
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import com.example.mafiarolegame.gameElements.Player;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import android.util.Log;
 
 public class GameSession {
 //    private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -28,6 +19,9 @@ public class GameSession {
     private String pin;
     private String name;
     private ArrayList<Player> players;
+    private int numberOfPlayers;
+    private int numberOfRoles;
+
 
     //private int numberOfPlayers;
     //private Player players;
@@ -37,9 +31,11 @@ public class GameSession {
 
     }
 
-    public GameSession(String pin, String name) {
+    public GameSession(String pin, String name, int numberOfPlayers, int numberOfRoles) {
         this.pin = pin;
         this.name = name;
+        this.numberOfPlayers = numberOfPlayers;
+        this.numberOfRoles = numberOfRoles;
 //        players = new ArrayList<Player>();
 
 //        DBM = new DBManager(pin);
@@ -56,6 +52,18 @@ public class GameSession {
 
     public void setPin(String pin) {
         this.pin = pin;
+    }
+
+    public int getNumberOfRoles() {
+        return numberOfRoles;
+    }
+
+    public int getNumberOfPlayers() {
+        return numberOfPlayers;
+    }
+
+    public void setNumberOfPlayers(int numberOfPlayers) {
+        this.numberOfPlayers = numberOfPlayers;
     }
 
     public String getName() {
@@ -92,5 +100,12 @@ public class GameSession {
 ////        testRef = playersRef.child("" + rand);
 ////        testRef.setValue(playerObj);
 //    }
+
+    public boolean chechIfEnoughPlayers() {
+        if(this.numberOfRoles == this.numberOfPlayers) return true;
+        else return false;
+    }
+
+
 
 }

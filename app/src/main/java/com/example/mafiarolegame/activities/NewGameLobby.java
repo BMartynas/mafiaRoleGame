@@ -3,13 +3,13 @@ package com.example.mafiarolegame.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
 import com.example.mafiarolegame.R;
 import com.example.mafiarolegame.gameElements.DBManager;
-import com.example.mafiarolegame.gameElements.GameSession;
 import com.example.mafiarolegame.gameElements.Player;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,6 +19,7 @@ public class NewGameLobby extends AppCompatActivity {
     private DBManager DBM;
     private String gamePinInfo, listOfPlayersDisplay = "";
     private GameSession game;
+    private int numberOfPlayers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,9 @@ public class NewGameLobby extends AppCompatActivity {
                 TextView listOfPlayers = (TextView) findViewById(R.id.listOfPlayers);
 
                 listOfPlayers.setText(listOfPlayersDisplay);
+                numberOfPlayers = game.getPlayers().size();
+                game.setNumberOfPlayers(numberOfPlayers);
+                if(game.chechIfEnoughPlayers()) showRole();
             }
 
             @Override
@@ -52,6 +56,12 @@ public class NewGameLobby extends AppCompatActivity {
             }
         });
 
+
 //        gamePin.setText(game.get);
+    }
+
+        public void showRole() {
+            Intent intent = new Intent(this, PlayersRole.class);
+            startActivity(intent);
     }
 }

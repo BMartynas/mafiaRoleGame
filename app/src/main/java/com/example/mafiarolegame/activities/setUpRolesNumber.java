@@ -4,14 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.mafiarolegame.R;
 import com.example.mafiarolegame.gameElements.DBManager;
-import com.example.mafiarolegame.gameElements.GameSession;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -103,8 +101,8 @@ public class setUpRolesNumber extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                game = new GameSession(sessionPin.getText().toString(), sessionName.getText().toString());
+                int numberOfRoles = Integer.parseInt(numberOfCitizens.getText().toString()) + Integer.parseInt(numberOfMafia.getText().toString());
+                game = new GameSession(sessionPin.getText().toString(), sessionName.getText().toString(), 1, numberOfRoles);
                 DBM = new DBManager(game.getPin());
                 DBM.createNewGame(game, nickname.getText().toString());
 
