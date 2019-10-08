@@ -11,12 +11,10 @@ import android.widget.Button;
 import android.util.Log;
 
 import com.example.mafiarolegame.gameElements.DBManager;
-import com.example.mafiarolegame.gameElements.GameSession;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.DataSnapshot;
-import java.util.Random;
 
 import com.example.mafiarolegame.R;
 
@@ -31,6 +29,7 @@ public class JoinExistingGame extends AppCompatActivity {
     private String gamePinS;
     private GameSession game;
     private int rand;
+    private int numberOfPlayers;
     private DBManager DBM;
 
     @Override
@@ -56,6 +55,7 @@ public class JoinExistingGame extends AppCompatActivity {
                         game = dataSnapshot.getValue(GameSession.class);
 
 
+
                         openNewGameLobby();
                         Log.v("TAGYEH", "" + dataSnapshot.child("players").getChildrenCount());
                     }
@@ -74,4 +74,6 @@ public class JoinExistingGame extends AppCompatActivity {
         intent.putExtra("gamePinInfo", gamePin.getText().toString());
         startActivity(intent);
     }
+
+
 }
