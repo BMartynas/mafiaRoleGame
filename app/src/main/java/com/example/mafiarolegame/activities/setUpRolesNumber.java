@@ -87,7 +87,11 @@ public class setUpRolesNumber extends AppCompatActivity {
         decNumberOfCitizens.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int nOfCitizens = Integer.parseInt(numberOfCitizens.getText().toString()) - 1;
+                int nOfCitizens;
+                if ((nOfCitizens = Integer.parseInt(numberOfCitizens.getText().toString()) - 1) < 0)
+                {
+                    nOfCitizens = 0;
+                }
                 numberOfCitizens.setText(nOfCitizens + "");
             }
         });
@@ -95,7 +99,11 @@ public class setUpRolesNumber extends AppCompatActivity {
         decNumberOfMafia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int nOfMafia = Integer.parseInt(numberOfMafia.getText().toString()) - 1;
+                int nOfMafia;
+                if ((nOfMafia = Integer.parseInt(numberOfMafia.getText().toString()) - 1) < 0)
+                {
+                    nOfMafia = 0;
+                }
                 numberOfMafia.setText(nOfMafia + "");
             }
         });
