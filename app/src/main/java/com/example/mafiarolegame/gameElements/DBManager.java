@@ -74,5 +74,4 @@ public class DBManager {
     public void updateDB(GameSession gameSessionRef) {
         this.gameRef.setValue(gameSessionRef);
     }
-
 }

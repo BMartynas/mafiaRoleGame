@@ -86,10 +86,10 @@ public class GameSession {
 //        return this;
 //    }
 
-    public ArrayList<Player> addPlayerToList(Player p) {
+    public void addPlayerToList(Player p) {
 
         players.add(p);
-        return players;
+//        return players;
     }
 
 //    public void addPlayer() {

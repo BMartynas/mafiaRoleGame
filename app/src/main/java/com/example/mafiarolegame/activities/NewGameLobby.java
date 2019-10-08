@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.mafiarolegame.R;
 import com.example.mafiarolegame.gameElements.DBManager;
 import com.example.mafiarolegame.gameElements.Player;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -33,15 +34,23 @@ public class NewGameLobby extends AppCompatActivity {
             gamePinInfo = previousActivityInfo.getString("gamePinInfo");
             gamePin.setText(gamePinInfo);
         }
+    }
 
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        this.updatePlayers();
+    }
+    public void updatePlayers() {
         DBM = new DBManager(gamePinInfo);
         DBM.getGameRef().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-              game = dataSnapshot.getValue(GameSession.class);
-              for (Player player : game.getPlayers()) {
-                  listOfPlayersDisplay = player.getName() + "\n" + listOfPlayersDisplay;
-              }
+                game = dataSnapshot.getValue(GameSession.class);
+                for (Player player : game.getPlayers()) {
+                    listOfPlayersDisplay = player.getName() + "\n" + listOfPlayersDisplay;
+                }
                 TextView listOfPlayers = (TextView) findViewById(R.id.listOfPlayers);
 
                 listOfPlayers.setText(listOfPlayersDisplay);
@@ -57,8 +66,6 @@ public class NewGameLobby extends AppCompatActivity {
             }
         });
 
-
-//        gamePin.setText(game.get);
     }
 
         public void showRole() {

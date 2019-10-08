@@ -57,7 +57,7 @@ public class JoinExistingGame extends AppCompatActivity {
                         game.setNumberOfPlayers(numberOfPlayers);
                         if(game.getPlayers().size() > 1) DBM.updateDB(game);
                         openNewGameLobby();
-                        
+
                         Log.v("TAGYEH", "" + dataSnapshot.child("players").getChildrenCount());
                     }
 
