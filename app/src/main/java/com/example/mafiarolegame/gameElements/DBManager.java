@@ -56,6 +56,10 @@ public class DBManager {
         gameRef.setValue(game);
     }
 
+    public int getNumberOfPlayers(DataSnapshot ds) {
+        return (int)ds.child("players").getChildrenCount();
+    }
+
     public DatabaseReference getGameRef() {
         return gameRef;
     }
