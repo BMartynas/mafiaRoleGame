@@ -71,8 +71,8 @@ public class DBManager {
         return this.playersRef;
     }
 
-    public void updateDB() {
-        this.gameRef.setValue(this.gameSessionRef);
+    public void updateDB(GameSession gameSessionRef) {
+        this.gameRef.setValue(gameSessionRef);
     }
 
 }
