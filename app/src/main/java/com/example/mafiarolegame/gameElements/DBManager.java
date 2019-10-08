@@ -34,7 +34,7 @@ public class DBManager {
         playersRef = gameRef.child("players");
 
         playerUniqueRef = playersRef.child("0");
-        playerUniqueRef.setValue(new Player(nick, "0"));
+        playerUniqueRef.setValue(new Player(nick, "0", "Citizen"));
 
 //        game.addPlayerToList(new Player("Kom", "0")))
 //        playerUniqueRef = gameRef.child("players").child("0");
@@ -50,7 +50,7 @@ public class DBManager {
         //rand = new Random().nextInt(1000000);
         playersRef = gameRef.child("players");
         playerUniqueRef = playersRef.child("" + ds.child("players").getChildrenCount());
-        Player newPlayer = new Player(name, "" + ds.child("players").getChildrenCount());
+        Player newPlayer = new Player(name, "" + ds.child("players").getChildrenCount(), "Citizen");
         game.addPlayerToList(newPlayer);
         playerUniqueRef.setValue(newPlayer);
     }

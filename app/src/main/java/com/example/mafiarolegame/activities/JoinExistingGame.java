@@ -65,6 +65,10 @@ public class JoinExistingGame extends AppCompatActivity {
                         Log.v("TAGYEH", "NO");
                     }
                 });
+                numberOfPlayers = game.getPlayers().size();
+                game.setNumberOfPlayers(numberOfPlayers);
+                if(game.getPlayers().size() > 1) DBM.updateDB(game);
+                openNewGameLobby();
             }
         });
     }

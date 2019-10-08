@@ -4,7 +4,7 @@ public class Player /*implements Shootable */{
     private String name;
     private String id;
     private boolean alive;
-    private String role = "Citizen";
+    private String role;
     //gal enumą geriau parašyt bet kam čia terliotis? Jankus sad
     //negeriau, nereikia cia svaigt apie visokius enumus b***, man ir taip niekas neveikia ******!!!
 
@@ -12,10 +12,11 @@ public class Player /*implements Shootable */{
 
     }
 
-    public Player(String name, String id) {
+    public Player(String name, String id, String role) {
         this.name = name;
         this.id = id;
         alive = true;
+        this.role = role;
 
     }
 
