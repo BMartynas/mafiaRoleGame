@@ -13,7 +13,10 @@ import java.util.concurrent.TimeUnit;
 
 public class CurrentGameScreen extends AppCompatActivity {
     private TextView timeLeftText;
-    private int timeLeft = 60;
+    private TextView timeOfDayText;
+    private int timeLeft = 5;       // test, change later
+    private boolean isDay;
+    final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +24,13 @@ public class CurrentGameScreen extends AppCompatActivity {
         setContentView(R.layout.activity_current_game_screen);
 
         timeLeftText = findViewById(R.id.timeLeftText);
+        timeOfDayText = findViewById(R.id.timeOfDayText);
+        setTimeOfDay(true);
         startCountdown();
     }
 
     public void startCountdown()
     {
-        final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
         executorService.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
@@ -41,7 +45,21 @@ public class CurrentGameScreen extends AppCompatActivity {
         timeLeftText.setText(Integer.toString(timeLeft));
         if (timeLeft == 0)
         {
-            // do sth useful
+            setTimeOfDay(!isDay);
+            timeLeft = 6;       // test, change later
+        }
+    }
+
+    public void setTimeOfDay(boolean isDay)
+    {
+        this.isDay = isDay;
+        if (isDay)
+        {
+            timeOfDayText.setText("Day");
+        }
+        else
+        {
+            timeOfDayText.setText("Night");
         }
     }
 }
