@@ -53,10 +53,11 @@ public class JoinExistingGame extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         game = dataSnapshot.getValue(GameSession.class);
                         DBM.createNewPlayer(playerName.getText().toString(), dataSnapshot, game);
-
-
-
+                        numberOfPlayers = game.getPlayers().size();
+                        game.setNumberOfPlayers(numberOfPlayers);
+                        if(game.getPlayers().size() > 1) DBM.updateDB(game);
                         openNewGameLobby();
+                        
                         Log.v("TAGYEH", "" + dataSnapshot.child("players").getChildrenCount());
                     }
 
@@ -65,10 +66,7 @@ public class JoinExistingGame extends AppCompatActivity {
                         Log.v("TAGYEH", "NO");
                     }
                 });
-                numberOfPlayers = game.getPlayers().size();
-                game.setNumberOfPlayers(numberOfPlayers);
-                if(game.getPlayers().size() > 1) DBM.updateDB(game);
-                openNewGameLobby();
+
             }
         });
     }
