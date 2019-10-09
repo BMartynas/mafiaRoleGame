@@ -24,6 +24,10 @@ public class SetUpRolesNumber extends AppCompatActivity {
 //    private DatabaseReference snRef;
     private DBManager DBM;
 
+    int nOfPlayers = 0;
+    int nOfCitizens = 0;
+    int nOfMafia = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +89,7 @@ public class SetUpRolesNumber extends AppCompatActivity {
         decNumberOfCitizens.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int nOfCitizens;
+
                 if ((nOfCitizens = Integer.parseInt(numberOfCitizens.getText().toString()) - 1) < 0)
                 {
                     nOfCitizens = 0;
@@ -97,7 +101,7 @@ public class SetUpRolesNumber extends AppCompatActivity {
         decNumberOfMafia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int nOfMafia;
+
                 if ((nOfMafia = Integer.parseInt(numberOfMafia.getText().toString()) - 1) < 0)
                 {
                     nOfMafia = 0;
@@ -109,8 +113,10 @@ public class SetUpRolesNumber extends AppCompatActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int numberOfRoles = Integer.parseInt(numberOfCitizens.getText().toString()) + Integer.parseInt(numberOfMafia.getText().toString());
-                game = new GameSession(sessionPin.getText().toString(), sessionName.getText().toString(), 1, numberOfRoles);
+                nOfMafia = Integer.parseInt(numberOfMafia.getText().toString());
+                nOfCitizens = Integer.parseInt(numberOfCitizens.getText().toString());
+//                int numberOfRoles = Integer.parseInt(numberOfCitizens.getText().toString()) + Integer.parseInt(numberOfMafia.getText().toString());
+                game = new GameSession(sessionPin.getText().toString(), sessionName.getText().toString(), nOfMafia, nOfCitizens);
                 DBM = new DBManager(game.getPin());
                 DBM.createNewGame(game, nickname.getText().toString());
 

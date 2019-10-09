@@ -28,6 +28,8 @@ public class GameSession implements Serializable {
     private ArrayList<Player> players;
     private int numberOfCurrentPlayers;
     private int numberOfExpectedPlayers;
+    private int numberOfMafia;
+    private int numberOfCitizens;
     private HashMap<String, Integer> votingResults = new HashMap<String, Integer>();
 
     public HashMap<String, Integer> getVotingResults() {
@@ -44,12 +46,16 @@ public class GameSession implements Serializable {
 
     }
 
-    public GameSession(String pin, String name, int numberOfCurrentPlayers, int numberOfExpectedPlayers) {
+    public GameSession(String pin, String name,int numberOfMafia, int numberOfCitizens) {
         this.pin = pin;
         this.name = name;
-        this.numberOfCurrentPlayers = numberOfCurrentPlayers;
-        this.numberOfExpectedPlayers = 4; // veliau atkeisti i line po apacia
-        //this.numberOfExpectedPlayers = numberOfExpectedPlayers;
+
+        this.numberOfMafia = numberOfMafia;
+        this.numberOfCitizens = numberOfCitizens;
+        this.numberOfCurrentPlayers = 0;
+        this.numberOfCurrentPlayers = 1;
+//        this.numberOfExpectedPlayers = 4; // veliau atkeisti i line po apacia
+        this.numberOfExpectedPlayers = numberOfCitizens + numberOfMafia;
 
 
 //        players = new ArrayList<Player>();
@@ -100,6 +106,22 @@ public class GameSession implements Serializable {
 
     public void setPlayers(ArrayList<Player> players) {
         this.players = players;
+    }
+
+    public int getNumberOfMafia() {
+        return numberOfMafia;
+    }
+
+    public void setNumberOfMafia(int numberOfMafia) {
+        this.numberOfMafia = numberOfMafia;
+    }
+
+    public int getNumberOfCitizens() {
+        return numberOfCitizens;
+    }
+
+    public void setNumberOfCitizens(int numberOfCitizens) {
+        this.numberOfCitizens = numberOfCitizens;
     }
 
     public Player getPlayerAt (int id) {
