@@ -1,5 +1,6 @@
 package com.example.mafiarolegame.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,9 +11,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.mafiarolegame.R;
+import com.example.mafiarolegame.gameElements.DBManager;
 import com.example.mafiarolegame.gameElements.Player;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -27,6 +33,8 @@ public class CurrentGameScreen extends AppCompatActivity {
     final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
     private MediaPlayer mediaPlayer;
     public int playerID;
+    private HashMap<String, Integer> votingResults;
+    private DBManager DBM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +48,12 @@ public class CurrentGameScreen extends AppCompatActivity {
         Intent intent = getIntent();
         game = (GameSession)intent.getSerializableExtra("GameSession");
         playerID = (int)intent.getIntExtra("playerID", playerID);
+
         playerRoleText.setText(game.getPlayerAt(playerID).getRole());
+        DBM = new DBManager(game.getPin());
+        votingResults = new HashMap<String, Integer>();
+
+        keepVotesUpToDate();
 
         int numberOfButtons = 6;
         Button buttons[] = new Button[numberOfButtons];
@@ -103,7 +116,30 @@ public class CurrentGameScreen extends AppCompatActivity {
 //            mediaPlayer.start();
         }
 
+
         //voting happens here
 
+    }
+
+    public void keepVotesUpToDate() {
+        DBM.getVotesRef().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                votingResults = dataSnapshot.child("votingResults").getValue(HashMap<String, Integer>);
+                votingResults.clear();
+
+                for (DataSnapshot voteSS: dataSnapshot.getChildren()) {
+                    int votes = voteSS.getValue(int.class);
+                    votingResults.put(voteSS.getKey(), votes);
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

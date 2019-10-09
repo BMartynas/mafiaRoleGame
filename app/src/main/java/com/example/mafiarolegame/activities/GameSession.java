@@ -30,15 +30,8 @@ public class GameSession implements Serializable {
     private int numberOfExpectedPlayers;
     private int numberOfMafia;
     private int numberOfCitizens;
-    private HashMap<String, Integer> votingResults = new HashMap<String, Integer>();
+    private HashMap<String, Integer> votingResults;
 
-    public HashMap<String, Integer> getVotingResults() {
-        return votingResults;
-    }
-
-    public void setVotingResults(HashMap<String, Integer> votingResults) {
-        this.votingResults = votingResults;
-    }
 //private int numberOfPlayers;
     //private Player players;
 
@@ -56,6 +49,9 @@ public class GameSession implements Serializable {
         this.numberOfCurrentPlayers = 1;
 //        this.numberOfExpectedPlayers = 4; // veliau atkeisti i line po apacia
         this.numberOfExpectedPlayers = numberOfCitizens + numberOfMafia;
+        votingResults = new HashMap<String, Integer>();
+//        votingResults.put("00", 1);
+//        votingResults.put("01", 2);
 
 
 //        players = new ArrayList<Player>();
@@ -122,6 +118,14 @@ public class GameSession implements Serializable {
 
     public void setNumberOfCitizens(int numberOfCitizens) {
         this.numberOfCitizens = numberOfCitizens;
+    }
+
+    public HashMap<String, Integer> getVotingResults() {
+        return votingResults;
+    }
+
+    public void setVotingResults(HashMap<String, Integer> votingResults) {
+        this.votingResults = votingResults;
     }
 
     public Player getPlayerAt (int id) {

@@ -12,8 +12,8 @@ public class DBManager {
     private DatabaseReference playersRef;
     private DatabaseReference numberOfCurrentPlayersRef;
     private DatabaseReference numberOfExpectedPlayersRef;
-    private DatabaseReference testRef;
     private DatabaseReference playerUniqueRef;
+    private DatabaseReference votesRef;
     private GameSession gameSessionRef;
     private int playerID;
 
@@ -27,11 +27,12 @@ public class DBManager {
         playersRef = gameRef.child("players");
         numberOfCurrentPlayersRef = gameRef.child("numberOfCurrentPlayers");
         numberOfExpectedPlayersRef = gameRef.child("numberOfExpectedPlayers");
+        votesRef = gameRef.child("votingResults");
     }
 
     public void createNewGame(GameSession game, String nick) {
         //gameRef = rootRef.child(game.getPin());
-        this.gameSessionRef = game;
+//        this.gameSessionRef = game;
 //        ArrayList<Player> someL = new ArrayList<>();
 //        someL.add(new Player("one", "01"));
 //        someL.add(new Player("two", "02"));
@@ -39,6 +40,7 @@ public class DBManager {
 
         playerUniqueRef = playersRef.child("0");
         playerUniqueRef.setValue(new Player(nick, "0", "Citizen")); //creator'io player'is
+//        votesRef.child("0").setValue(0);
 
 //        game.addPlayerToList(new Player("Kom", "0")))
 //        playerUniqueRef = gameRef.child("players").child("0");
@@ -86,6 +88,10 @@ public class DBManager {
 
     public DatabaseReference getPlayersRef() {
         return this.playersRef;
+    }
+
+    public DatabaseReference getVotesRef () {
+        return votesRef;
     }
 
     public void updateDB(GameSession gameSessionRef) {
