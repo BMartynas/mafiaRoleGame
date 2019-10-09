@@ -88,6 +88,10 @@ public class GameSession {
         this.players = players;
     }
 
+    public Player getPlayerAt (int id) {
+        return players.get(id);
+    }
+
     public void addPlayerToList(Player p) {
 
         players.add(p);
@@ -104,6 +108,6 @@ public class GameSession {
 //    }
 
     public boolean checkIfEnoughPlayers() {
-        return this.numberOfCurrentPlayers == this.numberOfExpectedPlayers;
+        return (this.numberOfCurrentPlayers == this.numberOfExpectedPlayers); // UNCHECKED CODE!!!!!
     }
 }

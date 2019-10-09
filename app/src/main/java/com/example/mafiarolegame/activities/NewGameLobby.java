@@ -21,12 +21,16 @@ public class NewGameLobby extends AppCompatActivity {
     private String gamePinInfo, listOfPlayersDisplay = "";
     private GameSession game;
     private int numberOfPlayers;
+    private String allPlayersS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_game_lobby);
+
         TextView gamePin = (TextView) findViewById(R.id.game_pin_text);
+        final TextView allPlayers = (TextView) findViewById(R.id.listOfPlayers);
+        allPlayersS = new String();
 
         DBM = new DBManager(gamePin.getText().toString());
 
@@ -40,13 +44,19 @@ public class NewGameLobby extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 game = dataSnapshot.getValue(GameSession.class);
-
                 game.getNumberOfCurrentPlayers();
-                if (game.getNumberOfCurrentPlayers() == game.getNumberOfExpectedPlayers()) {
+                if (game.checkIfEnoughPlayers()) {
                     // GOTO OTHER ACTIVITY
-                    Log.v("FULLGAME", "game is full, changing activity...");
+                    Log.v("ROOM", game.getNumberOfCurrentPlayers() + "");
                     showRole();
+
                 }
+
+                allPlayersS = "";
+                for (int i = 0; i < game.getNumberOfCurrentPlayers(); i++) {
+                    allPlayersS += game.getPlayerAt(i).getName() + "\n";
+                }
+                allPlayers.setText(allPlayersS);
             }
 
             @Override
@@ -88,7 +98,7 @@ public class NewGameLobby extends AppCompatActivity {
 
     }
 
-        public void showRole() {
+    public void showRole() {
             Intent intent = new Intent(this, ShowRole.class);
             startActivity(intent);
     }
