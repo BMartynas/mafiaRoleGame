@@ -16,6 +16,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class NewGameLobby extends AppCompatActivity {
     private DBManager DBM;
     private String gamePinInfo, listOfPlayersDisplay = "";
@@ -99,10 +102,39 @@ public class NewGameLobby extends AppCompatActivity {
     }
 
     public void showRole() {
+            assignRoles();
             Intent intent = new Intent(this, CurrentGameScreen.class);
             intent.putExtra("GameSession", game);
             intent.putExtra("playerID", DBM.getPlayerID());
             startActivity(intent);
+    }
+
+    public void assignRoles (){
+        int mafia = game.getNumberOfMafia();
+        int citizens = game.getNumberOfCitizens();
+        Random rand = new Random();
+        ArrayList<Player> temp = game.getPlayers();
+        for (Player p: temp) {
+            if(mafia > 0 && citizens > 0) {
+                if(rand.nextBoolean() == true){
+                    p.setRole("Mafia");
+                    mafia--;
+                } else {
+                    p.setRole("Citizen");
+                    citizens--;
+                }
+            } else if(mafia > 0) {
+                p.setRole("Mafia");
+                mafia--;
+            } else if(citizens > 0) {
+                p.setRole("Citizen");
+                citizens--;
+            } else {
+                Log.d("weird", "all roles assigned, loop should be closed");
+            }
+        }
+        game.setPlayers(temp);
+        DBM.getGameRef().setValue(game);
     }
 
     public GameSession getLatestGameSession() {
