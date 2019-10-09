@@ -10,7 +10,8 @@ public class DBManager {
     private DatabaseReference rootRef = database.getReference("/Session ID");
     private DatabaseReference gameRef;
     private DatabaseReference playersRef;
-    private DatabaseReference numberOfPlayers;
+    private DatabaseReference numberOfCurrentPlayersRef;
+    private DatabaseReference numberOfExpectedPlayersRef;
     private DatabaseReference testRef;
     private DatabaseReference playerUniqueRef;
     private GameSession gameSessionRef;
@@ -22,6 +23,9 @@ public class DBManager {
     public DBManager(String gamePin) {
         this.gamePin = gamePin;
         gameRef = rootRef.child(gamePin);
+        playersRef = gameRef.child("players");
+        numberOfCurrentPlayersRef = gameRef.child("numberOfCurrentPlayers");
+        numberOfExpectedPlayersRef = gameRef.child("numberOfExpectedPlayers");
     }
 
     public void createNewGame(GameSession game, String nick) {
@@ -31,10 +35,9 @@ public class DBManager {
 //        someL.add(new Player("one", "01"));
 //        someL.add(new Player("two", "02"));
         gameRef.setValue(game);
-        playersRef = gameRef.child("players");
 
         playerUniqueRef = playersRef.child("0");
-        playerUniqueRef.setValue(new Player(nick, "0", "Citizen"));
+        playerUniqueRef.setValue(new Player(nick, "0", "Citizen")); //creator'io player'is
 
 //        game.addPlayerToList(new Player("Kom", "0")))
 //        playerUniqueRef = gameRef.child("players").child("0");
@@ -48,11 +51,12 @@ public class DBManager {
 
     public void createNewPlayer(String name, DataSnapshot ds, GameSession game) {
         //rand = new Random().nextInt(1000000);
-        playersRef = gameRef.child("players");
+        //playersRef = gameRef.child("players");
         playerUniqueRef = playersRef.child("" + ds.child("players").getChildrenCount());
-        Player newPlayer = new Player(name, "" + ds.child("players").getChildrenCount(), "Citizen");
-        game.addPlayerToList(newPlayer);
+        Player newPlayer = new Player(name, "" + ds.child("numberOfCurrentPlayers").getValue(), "Citizen");
+        //game.addPlayerToList(newPlayer); // Turetu veikti be sito, nes update'inamas visas game session object
         playerUniqueRef.setValue(newPlayer);
+        numberOfCurrentPlayersRef.setValue(ds.child("numberOfCurrentPlayers").getValue(int.class) + 1);
     }
 
     public void refreshValues(GameSession game) {
@@ -61,6 +65,10 @@ public class DBManager {
 
     public int getNumberOfPlayers(DataSnapshot ds) {
         return (int)ds.child("players").getChildrenCount();
+    }
+
+    public void setNumberOfPlayers(int num) {
+        gameRef.child("numberOfCurrentPlayers").setValue(num);
     }
 
     public DatabaseReference getGameRef() {

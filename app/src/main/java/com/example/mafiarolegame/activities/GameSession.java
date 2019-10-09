@@ -19,23 +19,25 @@ public class GameSession {
     private String pin;
     private String name;
     private ArrayList<Player> players;
-    private int numberOfPlayers;
-    private int numberOfRoles;
+    private int numberOfCurrentPlayers;
+    private int numberOfExpectedPlayers;
 
 
     //private int numberOfPlayers;
     //private Player players;
 
-    // Don't touch this, srsly
     public GameSession() {
 
     }
 
-    public GameSession(String pin, String name, int numberOfPlayers, int numberOfRoles) {
+    public GameSession(String pin, String name, int numberOfCurrentPlayers, int numberOfExpectedPlayers) {
         this.pin = pin;
         this.name = name;
-        this.numberOfPlayers = numberOfPlayers;
-        this.numberOfRoles = numberOfRoles;
+        this.numberOfCurrentPlayers = numberOfCurrentPlayers;
+        this.numberOfExpectedPlayers = 4; // veliau atkeisti i line po apacia
+        //this.numberOfExpectedPlayers = numberOfExpectedPlayers;
+
+
 //        players = new ArrayList<Player>();
 
 //        DBM = new DBManager(pin);
@@ -54,16 +56,20 @@ public class GameSession {
         this.pin = pin;
     }
 
-    public int getNumberOfRoles() {
-        return numberOfRoles;
+    public int getNumberOfCurrentPlayers() {
+        return numberOfCurrentPlayers;
     }
 
-    public int getNumberOfPlayers() {
-        return numberOfPlayers;
+    public void setNumberOfCurrentPlayers(int numberOfCurrentPlayers) {
+        this.numberOfCurrentPlayers = numberOfCurrentPlayers;
     }
 
-    public void setNumberOfPlayers(int numberOfPlayers) {
-        this.numberOfPlayers = numberOfPlayers;
+    public int getNumberOfExpectedPlayers() {
+        return numberOfExpectedPlayers;
+    }
+
+    public void setNumberOfExpectedPlayers(int numberOfExpectedPlayers) {
+        this.numberOfExpectedPlayers = numberOfExpectedPlayers;
     }
 
     public String getName() {
@@ -82,10 +88,6 @@ public class GameSession {
         this.players = players;
     }
 
-//    public GameSession getGameSession() {
-//        return this;
-//    }
-
     public void addPlayerToList(Player p) {
 
         players.add(p);
@@ -102,6 +104,6 @@ public class GameSession {
 //    }
 
     public boolean checkIfEnoughPlayers() {
-        return this.numberOfRoles == this.numberOfPlayers;
+        return this.numberOfCurrentPlayers == this.numberOfExpectedPlayers;
     }
 }

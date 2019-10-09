@@ -58,14 +58,14 @@ public class CurrentGameScreen extends AppCompatActivity {
         if (isDay)
         {
             timeOfDayText.setText("Day");
-            mediaPlayer = MediaPlayer.create(CurrentGameScreen.this, R.raw.everyone_wake_up);   // galima gaidi
-            mediaPlayer.start();
+//            mediaPlayer = MediaPlayer.create(CurrentGameScreen.this, R.raw.everyone_wake_up);   // galima gaidi
+//            mediaPlayer.start();
         }
         else
         {
             timeOfDayText.setText("Night");
-            mediaPlayer = MediaPlayer.create(CurrentGameScreen.this, R.raw.mafia_wake_up_vote);
-            mediaPlayer.start();
+//            mediaPlayer = MediaPlayer.create(CurrentGameScreen.this, R.raw.mafia_wake_up_vote);
+//            mediaPlayer.start();
         }
     }
 }

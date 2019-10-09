@@ -43,6 +43,14 @@ public class Player /*implements Shootable */{
         alive = b;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public void getShot() {
         setIsAlive(false);
     }

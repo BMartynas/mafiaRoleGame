@@ -28,19 +28,39 @@ public class NewGameLobby extends AppCompatActivity {
         setContentView(R.layout.activity_new_game_lobby);
         TextView gamePin = (TextView) findViewById(R.id.game_pin_text);
 
+        DBM = new DBManager(gamePin.getText().toString());
 
         Bundle previousActivityInfo = getIntent().getExtras();
         if (previousActivityInfo != null) {
             gamePinInfo = previousActivityInfo.getString("gamePinInfo");
             gamePin.setText(gamePinInfo);
         }
+
+        DBM.getGameRef().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                game = dataSnapshot.getValue(GameSession.class);
+
+                game.getNumberOfCurrentPlayers();
+                if (game.getNumberOfCurrentPlayers() == game.getNumberOfExpectedPlayers()) {
+                    // GOTO OTHER ACTIVITY
+                    Log.v("FULLGAME", "game is full, changing activity...");
+                    showRole();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.v("FULLGAME", "NO");
+            }
+        });
     }
 
     @Override
     protected void onResume() {
 
         super.onResume();
-        this.updatePlayers();
+        //this.updatePlayers();
     }
     public void updatePlayers() {
         DBM = new DBManager(gamePinInfo);
@@ -55,9 +75,9 @@ public class NewGameLobby extends AppCompatActivity {
 
                 listOfPlayers.setText(listOfPlayersDisplay);
                 numberOfPlayers = game.getPlayers().size();
-                game.setNumberOfPlayers(numberOfPlayers);
+                game.setNumberOfCurrentPlayers(numberOfPlayers);
                 if(game.getPlayers().size() > 1) DBM.updateDB(game);
-                if(game.getNumberOfRoles() == DBM.getNumberOfPlayers(dataSnapshot)) showRole();
+                if(game.getNumberOfExpectedPlayers() == DBM.getNumberOfPlayers(dataSnapshot)) showRole();
             }
 
             @Override
@@ -73,3 +93,14 @@ public class NewGameLobby extends AppCompatActivity {
             startActivity(intent);
     }
 }
+
+
+
+
+
+
+
+//           _
+//       ___/ *>
+//   ~~~~\____/~~~~~~
+//
