@@ -34,10 +34,10 @@ public class CurrentGameScreen extends AppCompatActivity {
         timeOfDayText = findViewById(R.id.timeOfDayText);
         playerRoleText = findViewById(R.id.yourRoleText);
 
-        Intent intent = getIntent();
-        game = (GameSession)intent.getSerializableExtra("GameSession");
-        playerID = (int)intent.getIntExtra("playerID", playerID);
-        playerRoleText.setText(game.getPlayerAt(playerID).getRole());
+//        Intent intent = getIntent();
+//        game = (GameSession)intent.getSerializableExtra("GameSession");
+//        playerID = (int)intent.getIntExtra("playerID", playerID);
+//        playerRoleText.setText(game.getPlayerAt(playerID).getRole());
 
         changeTimeOfDay(true);
         startCountdown();

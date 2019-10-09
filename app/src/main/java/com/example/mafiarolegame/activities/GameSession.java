@@ -8,6 +8,11 @@ import com.example.mafiarolegame.gameElements.Player;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
+import java.util.Map.Entry;
 
 public class GameSession implements Serializable {
 //    private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -23,9 +28,16 @@ public class GameSession implements Serializable {
     private ArrayList<Player> players;
     private int numberOfCurrentPlayers;
     private int numberOfExpectedPlayers;
+    private HashMap<String, Integer> votingResults = new HashMap<String, Integer>();
 
+    public HashMap<String, Integer> getVotingResults() {
+        return votingResults;
+    }
 
-    //private int numberOfPlayers;
+    public void setVotingResults(HashMap<String, Integer> votingResults) {
+        this.votingResults = votingResults;
+    }
+//private int numberOfPlayers;
     //private Player players;
 
     public GameSession() {
@@ -105,5 +117,34 @@ public class GameSession implements Serializable {
 
     public boolean checkIfEnoughPlayers() {
         return (this.numberOfCurrentPlayers == this.numberOfExpectedPlayers); // UNCHECKED CODE!!!!!
+    }
+
+    public void addVote(String name) {
+        int currentVotes = 0;
+        if (votingResults.containsKey(name)) {
+            currentVotes = this.votingResults.get(name);
+        }
+        votingResults.put(name, currentVotes + 1);
+    }
+
+    public String obtainVotingResults() {
+        int maxVotes = Collections.max(votingResults.values());
+
+        List<String> playersWithMaxVotes = new ArrayList<String>();
+        for (Entry<String, Integer> player : votingResults.entrySet()) {
+            if (player.getValue() == maxVotes) {
+                playersWithMaxVotes.add(player.getKey());
+            }
+        }
+
+
+        if (playersWithMaxVotes.size() == 1) {
+            return playersWithMaxVotes.get(0);
+        }
+
+        //if tied
+        int howManyTied = playersWithMaxVotes.size();
+        int randomPlayerIndex = new Random().nextInt(howManyTied);
+        return playersWithMaxVotes.get(randomPlayerIndex);
     }
 }
