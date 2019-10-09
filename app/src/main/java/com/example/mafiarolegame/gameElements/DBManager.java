@@ -15,6 +15,7 @@ public class DBManager {
     private DatabaseReference testRef;
     private DatabaseReference playerUniqueRef;
     private GameSession gameSessionRef;
+    private int playerID;
 
     private int rand;
     private String gamePin;
@@ -50,13 +51,13 @@ public class DBManager {
     }
 
     public void createNewPlayer(String name, DataSnapshot ds, GameSession game) {
-        //rand = new Random().nextInt(1000000);
-        //playersRef = gameRef.child("players");
-        playerUniqueRef = playersRef.child("" + ds.child("players").getChildrenCount());
-        Player newPlayer = new Player(name, "" + ds.child("numberOfCurrentPlayers").getValue(), "Citizen");
-        //game.addPlayerToList(newPlayer); // Turetu veikti be sito, nes update'inamas visas game session object
-        playerUniqueRef.setValue(newPlayer);
-        numberOfCurrentPlayersRef.setValue(ds.child("numberOfCurrentPlayers").getValue(int.class) + 1);
+
+        playerID = ds.child("numberOfCurrentPlayers").getValue(int.class);
+
+        playerUniqueRef = playersRef.child("" + playerID);
+//        Player newPlayer = new Player(name, "" + ds.child("numberOfCurrentPlayers").getValue(), "Citizen");
+        playerUniqueRef.setValue(new Player(name, "" + playerID, "Citizen"));
+        numberOfCurrentPlayersRef.setValue(playerID + 1);
     }
 
     public void refreshValues(GameSession game) {
@@ -69,6 +70,14 @@ public class DBManager {
 
     public void setNumberOfPlayers(int num) {
         gameRef.child("numberOfCurrentPlayers").setValue(num);
+    }
+
+    public int getPlayerID() {
+        return playerID;
+    }
+
+    public void setPlayerID(int playerID) {
+        this.playerID = playerID;
     }
 
     public DatabaseReference getGameRef() {

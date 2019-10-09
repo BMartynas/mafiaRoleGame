@@ -1,6 +1,8 @@
 package com.example.mafiarolegame.gameElements;
 
-public class Player /*implements Shootable */{
+import java.io.Serializable;
+
+public class Player /*implements Shootable */ implements Serializable {
     private String name;
     private String id;
     private boolean alive;

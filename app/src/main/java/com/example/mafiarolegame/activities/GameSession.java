@@ -3,11 +3,13 @@ package com.example.mafiarolegame.activities;
 import android.content.Context;
 import android.content.Intent;
 
+import com.example.mafiarolegame.gameElements.DBManager;
 import com.example.mafiarolegame.gameElements.Player;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class GameSession {
+public class GameSession implements Serializable {
 //    private FirebaseDatabase database = FirebaseDatabase.getInstance();
 //    private DatabaseReference rootRef = database.getReference("/Session ID");
 //    private DatabaseReference gameRef;
@@ -90,12 +92,6 @@ public class GameSession {
 
     public Player getPlayerAt (int id) {
         return players.get(id);
-    }
-
-    public void addPlayerToList(Player p) {
-
-        players.add(p);
-//        return players;
     }
 
 //    public void addPlayer() {

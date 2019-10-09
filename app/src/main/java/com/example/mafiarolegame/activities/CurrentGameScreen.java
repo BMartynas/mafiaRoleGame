@@ -2,8 +2,10 @@ package com.example.mafiarolegame.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.example.mafiarolegame.R;
@@ -15,10 +17,13 @@ import java.util.concurrent.TimeUnit;
 public class CurrentGameScreen extends AppCompatActivity {
     private TextView timeLeftText;
     private TextView timeOfDayText;
+    private TextView playerRoleText;
+    private GameSession game;
     private int timeLeft = 5;       // test, change later
     private boolean isDay;
     final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
     private MediaPlayer mediaPlayer;
+    public int playerID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +32,16 @@ public class CurrentGameScreen extends AppCompatActivity {
 
         timeLeftText = findViewById(R.id.timeLeftText);
         timeOfDayText = findViewById(R.id.timeOfDayText);
+        playerRoleText = findViewById(R.id.yourRoleText);
+
+        Intent intent = getIntent();
+        game = (GameSession)intent.getSerializableExtra("GameSession");
+        playerID = (int)intent.getIntExtra("playerID", playerID);
+        playerRoleText.setText(game.getPlayerAt(playerID).getRole());
+
         changeTimeOfDay(true);
         startCountdown();
+
     }
 
     public void startCountdown()

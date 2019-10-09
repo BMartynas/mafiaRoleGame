@@ -99,8 +99,14 @@ public class NewGameLobby extends AppCompatActivity {
     }
 
     public void showRole() {
-            Intent intent = new Intent(this, ShowRole.class);
+            Intent intent = new Intent(this, CurrentGameScreen.class);
+            intent.putExtra("GameSession", game);
+            intent.putExtra("playerID", DBM.getPlayerID());
             startActivity(intent);
+    }
+
+    public GameSession getLatestGameSession() {
+        return this.game;
     }
 }
 
