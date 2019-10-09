@@ -40,12 +40,13 @@ public class JoinExistingGame extends AppCompatActivity {
         gamePin = (EditText) findViewById(R.id.game_pin_text);
         playerName = (EditText) findViewById(R.id.player_name_text);
         joinGame = (Button) findViewById(R.id.join_game_button);
-        DBM = new DBManager(gamePin.getText().toString());
+
 
 
         joinGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DBM = new DBManager(gamePin.getText().toString());
 
                 DBM.getGameRef().addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -57,16 +58,13 @@ public class JoinExistingGame extends AppCompatActivity {
 //                        game.setNumberOfPlayers(numberOfPlayers);
 //                        if(game.getPlayers().size() > 1) DBM.updateDB(game);
                         openNewGameLobby();
-
-                        Log.v("TAGYEH", "" + dataSnapshot.child("players").getChildrenCount());
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Log.v("TAGYEH", "NO");
+                        Log.v("Weird", "JoinExistingGame got canceled.");
                     }
                 });
-
             }
         });
     }

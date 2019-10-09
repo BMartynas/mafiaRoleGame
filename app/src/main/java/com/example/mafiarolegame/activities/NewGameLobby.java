@@ -44,14 +44,14 @@ public class NewGameLobby extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 game = dataSnapshot.getValue(GameSession.class);
-                game.getNumberOfCurrentPlayers();
+                //game.getNumberOfCurrentPlayers();
+                Log.v("ROOM", game.getNumberOfCurrentPlayers() + "");
                 if (game.checkIfEnoughPlayers()) {
                     // GOTO OTHER ACTIVITY
-                    Log.v("ROOM", game.getNumberOfCurrentPlayers() + "");
                     showRole();
-
                 }
 
+                Log.v("ROOM", "Refilling player list");
                 allPlayersS = "";
                 for (int i = 0; i < game.getNumberOfCurrentPlayers(); i++) {
                     allPlayersS += game.getPlayerAt(i).getName() + "\n";
