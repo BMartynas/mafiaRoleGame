@@ -102,7 +102,7 @@ public class NewGameLobby extends AppCompatActivity {
     }
 
     public void showRole() {
-            assignRoles();
+            //assignRoles();
             Intent intent = new Intent(this, CurrentGameScreen.class);
             intent.putExtra("GameSession", game);
             intent.putExtra("playerID", DBM.getPlayerID());
@@ -130,7 +130,9 @@ public class NewGameLobby extends AppCompatActivity {
                 p.setRole("Citizen");
                 citizens--;
             } else {
-                Log.d("weird", "all roles assigned, loop should be closed");
+
+                Log.v("weird", "all roles assigned, loop should be closed");
+                break;
             }
         }
         game.setPlayers(temp);
