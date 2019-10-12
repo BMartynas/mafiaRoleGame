@@ -28,7 +28,7 @@ public class CurrentGameScreen extends AppCompatActivity {
     private TextView timeOfDayText;
     private TextView playerRoleText;
     private GameSession game;
-    private int timeLeft = 5;       // test, change later
+    private int timeLeft = 11;       // test, change later
     private boolean isDay;
     final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
     private MediaPlayer mediaPlayer;
@@ -50,6 +50,7 @@ public class CurrentGameScreen extends AppCompatActivity {
         playerID = (int)intent.getIntExtra("playerID", playerID);
 
         playerRoleText.setText(game.getPlayerAt(playerID).getRole());
+        Log.v("Session", "role is:" + game.getPlayerAt(playerID).getRole());
         DBM = new DBManager(game.getPin());
         votingResults = new HashMap<String, Integer>();
 
@@ -96,7 +97,7 @@ public class CurrentGameScreen extends AppCompatActivity {
         if (timeLeft == 0)
         {
             changeTimeOfDay(!isDay);
-            timeLeft = 6;       // test, change later
+            timeLeft = 11;       // test, change later
         }
     }
 
@@ -106,14 +107,14 @@ public class CurrentGameScreen extends AppCompatActivity {
         if (isDay)
         {
             timeOfDayText.setText("Day");
-//            mediaPlayer = MediaPlayer.create(CurrentGameScreen.this, R.raw.everyone_wake_up);   // galima gaidi
-//            mediaPlayer.start();
+            mediaPlayer = MediaPlayer.create(CurrentGameScreen.this, R.raw.everyone_wake_up);   // galima gaidi
+            mediaPlayer.start();
         }
         else
         {
             timeOfDayText.setText("Night");
-//            mediaPlayer = MediaPlayer.create(CurrentGameScreen.this, R.raw.mafia_wake_up_vote);
-//            mediaPlayer.start();
+            mediaPlayer = MediaPlayer.create(CurrentGameScreen.this, R.raw.mafia_wake_up_vote);
+            mediaPlayer.start();
         }
 
 

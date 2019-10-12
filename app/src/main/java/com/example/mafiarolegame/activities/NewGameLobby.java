@@ -25,6 +25,7 @@ public class NewGameLobby extends AppCompatActivity {
     private GameSession game;
     private int numberOfPlayers;
     private String allPlayersS;
+    private boolean gateOpen; //ar dar galima pereiti i gamesession
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class NewGameLobby extends AppCompatActivity {
         allPlayersS = new String();
 
         DBM = new DBManager(gamePin.getText().toString());
+        gateOpen = true;
 
         Bundle previousActivityInfo = getIntent().getExtras();
         if (previousActivityInfo != null) {
@@ -49,8 +51,9 @@ public class NewGameLobby extends AppCompatActivity {
                 game = dataSnapshot.getValue(GameSession.class);
                 //game.getNumberOfCurrentPlayers();
                 Log.v("ROOM", game.getNumberOfCurrentPlayers() + "");
-                if (game.checkIfEnoughPlayers()) {
+                if (game.checkIfEnoughPlayers() && gateOpen == true) {
                     // GOTO OTHER ACTIVITY
+                    gateOpen = false;
                     showRole();
                 }
 
@@ -102,7 +105,7 @@ public class NewGameLobby extends AppCompatActivity {
     }
 
     public void showRole() {
-            //assignRoles();
+            assignRoles();
             Intent intent = new Intent(this, CurrentGameScreen.class);
             intent.putExtra("GameSession", game);
             intent.putExtra("playerID", DBM.getPlayerID());

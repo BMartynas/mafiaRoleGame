@@ -66,9 +66,9 @@ public class MainScreen extends AppCompatActivity {
     }
 
     public void openInstructions() {
-        //Intent intent = new Intent(this, Instructions.class);
-        //startActivity(intent);
-        Intent intent = new Intent(this, CurrentGameScreen.class);
+        Intent intent = new Intent(this, Instructions.class);
         startActivity(intent);
+//        Intent intent = new Intent(this, CurrentGameScreen.class);
+//        startActivity(intent);
     }
 }
